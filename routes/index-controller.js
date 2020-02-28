@@ -1,7 +1,6 @@
 const uuid = require('uuid/v4')
 const db = require('../db')
 
-
 const insertHappy = async function(req, res, next){
     let emotion = parseInt(req.body.emotion);
     let date = new Date(); 
@@ -30,15 +29,9 @@ const insertHappy = async function(req, res, next){
     }
     let insertQuery = `INSERT INTO wellness (val,text,rid,date) VALUES ($1,$2,$3,$4) returning id`; 
     let dbResp = await db.query(insertQuery, [req.body.emotion, emotion, id, date]); 
-    console.log('++',dbResp[0].id )
     res.status(200).json(dbResp[0].id); 
 };
   
-
-
-
-
-
   
 const getAllEmotions = async function(req,res,next){
   const getAllQuery = `SELECT * FROM wellness`;
