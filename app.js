@@ -6,7 +6,7 @@ var logger = require('morgan');
 var helmet = require('helmet')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var securityRouter = require('./routes/security.routes')
 var app = express();
 //helmet 
 app.use(helmet()); 
@@ -29,8 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/', securityRouter)
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
