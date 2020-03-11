@@ -1,3 +1,4 @@
+require('dotenv').config()
 const uuid = require('uuid/v4')
 const db = require('../db')
 
@@ -16,14 +17,15 @@ const sendKeyViaEmail = function (email, key){
         service: 'gmail',
         auth: {
           user: 'jfa.emotions@gmail.com',
-          pass: 'rqxkfyclmwesfvhi'
+          //create enviro password. 
+          pass: process.env.EMAIL_PASSWORD
         }
       });
       var mailOptions = {
-        from: 'jfa0221@gmail.com',
+        from: 'jfa.emotions@gmail.com',
         to: `${email}`,
         subject: 'Sending Email using Node.js',
-        text: `The API Key is: ${key}`
+        html: `<h1 style='color:red'>The API Key is: ${key}</h1>`
       };
 
     transporter.sendMail(mailOptions, function(error, info){
