@@ -1,8 +1,8 @@
-# Welness 
+#Welness 
 
 The Purpose of this app is to track your emotions.  
 
-# Environmental File Format 
+#Environmental File Format 
 DB_HOST
 DB_PORT
 DB_NAME
