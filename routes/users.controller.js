@@ -12,7 +12,7 @@ const insertUser = async function (req, res, next){
 }
 
 const sendKeyViaEmail = function (email, key){
-    const nodemailer = require('nodeMailer');
+    const nodemailer = require('nodemailer');
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
